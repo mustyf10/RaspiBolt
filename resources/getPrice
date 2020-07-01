@@ -1,0 +1,13 @@
+# -*- coding: utf-8 -*-
+#!usr/bin/python
+
+# Python script to get latest spot price from coinbase - BTC/GBP. No API token needed
+
+import requests
+
+def getBitcoinPrice(): # Print current bitcoin price from coinbase
+    coinbase = requests.get("https://api.coinbase.com/v2/prices/BTC-GBP/spot").json()
+    bitcoinPrice = str(round(float(coinbase['data']['amount']), 2))
+    return "£" + bitcoinPrice
+
+print(getBitcoinPrice())
